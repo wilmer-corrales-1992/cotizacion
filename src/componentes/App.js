@@ -11,7 +11,7 @@ class App extends Component {
   render(){
     return (
       <div className="contenedor">
-        <Header titulo="Cotizador de Seguro de Auto"/>
+        <Header titulo="Cotizador de seguro de auto"/>
         <div className="contenedor-formulario">
           <Formulario
             cotizarSeguro={this.cotizarSeguro}
