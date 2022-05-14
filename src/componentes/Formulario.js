@@ -43,6 +43,10 @@ class Formulario extends Component {
                 <div className="campo">
                     <label>Año</label>
                     <select name="year" ref={this.yearRef}>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
                         <option value="2018">2018</option>
                         <option value="2017">2017</option>
                         <option value="2016">2016</option>
