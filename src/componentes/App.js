@@ -1,9 +1,16 @@
 import React, {Component} from "react";
 import Header from "./Header";
 import Formulario from "./Formulario";
-import {calcularMarca, obtenerDiferenciaAnio} from "../helper"
+import {calcularMarca, obtenerDiferenciaAnio, obtenerPlan} from "../helper"
+import Resumen from "./Resumen"
+import Resultado from "./Resultado";
 
 class App extends Component {
+
+  state = {
+    resultado: "",
+    datos: {}
+  }
 
   cotizarSeguro = (datos) => {
     const {marca, plan, year} = datos
@@ -21,7 +28,17 @@ class App extends Component {
     resultado = calcularMarca(marca) * resultado
     
 
-    // el lplan del auto, el básico in
+    // plan basico incrementa el valor 20% y cobertura 50%
+    let incrementoPlan = obtenerPlan(plan)
+
+    // dependiendo del plan incrementar
+    resultado = parseFloat(incrementoPlan * resultado).toFixed(2)
+
+    // ya tenemos el costo
+    this.setState({
+      resultado: resultado,
+      datos: datos,
+    })
 
   }
 
@@ -32,6 +49,12 @@ class App extends Component {
         <div className="contenedor-formulario">
           <Formulario
             cotizarSeguro={this.cotizarSeguro}
+          />
+          <Resumen
+            datos={this.state.datos}
+          />
+          <Resultado
+              resultado={this.state.resultado}
           />
         </div>
       </div>
